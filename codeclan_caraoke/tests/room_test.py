@@ -6,13 +6,13 @@ from classes.song import *
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.guest = Guest("Dave", 200)
-        self.guest1 = Guest("Julia", 100)
-        self.guest2 = Guest("Caroline", 250)
-        self.guest3 = Guest("Bill", 100)
-        self.guest4 = Guest("Gavin", 60)
-        self.guest5 = Guest("Ringo", 300)
-        self.poor_guest = Guest("Oscar", 5)
+        self.guest = Guest("Dave", 200, "Fave")
+        self.guest1 = Guest("Julia", 100, "Fave1")
+        self.guest2 = Guest("Caroline", 250, "Fave2")
+        self.guest3 = Guest("Bill", 100, "Fave3")
+        self.guest4 = Guest("Gavin", 60, "Rock and Roll")
+        self.guest5 = Guest("Ringo", 300, "Fave5")
+        self.poor_guest = Guest("Oscar", 5, "Fave6")
         self.room = Room("One", 10)
         self.busy_room = [(self.guest, self.poor_guest)]
         self.song1 = Song("The Velvet Underground", "Rock and Roll", 1)
