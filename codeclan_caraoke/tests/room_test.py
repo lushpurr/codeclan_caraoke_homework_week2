@@ -7,6 +7,11 @@ from classes.song import *
 class TestRoom(unittest.TestCase):
     def setUp(self):
         self.guest = Guest("Dave", 200)
+        self.guest1 = Guest("Julia", 100)
+        self.guest2 = Guest("Caroline", 250)
+        self.guest3 = Guest("Bill", 100)
+        self.guest4 = Guest("Gavin", 60)
+        self.guest5 = Guest("Ringo", 300)
         self.poor_guest = Guest("Oscar", 5)
         self.room = Room("One", 10)
         self.busy_room = [(self.guest, self.poor_guest)]
@@ -44,5 +49,17 @@ class TestRoom(unittest.TestCase):
         self.room.add_song_to_list(self.song3)
         self.assertEqual(3, len(self.room.room_song_list))
 
+    def test_room_has_reached_capacity__False(self):
+        self.room.add_to_booking(self.guest)
+        self.assertEqual(False, self.room.has_room_reached_capacity(self.room.room_guest_list))
+
+    def test_room_has_reached_capacity__True(self):
+        self.room.add_to_booking(self.guest)
+        self.room.add_to_booking(self.guest1)
+        self.room.add_to_booking(self.guest2)
+        self.room.add_to_booking(self.guest3)
+        self.room.add_to_booking(self.guest4)
+        self.room.add_to_booking(self.guest5)
+        self.assertEqual(True, self.room.has_room_reached_capacity(self.room.room_guest_list))
 
 

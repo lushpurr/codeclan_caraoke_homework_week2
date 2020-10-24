@@ -35,3 +35,11 @@ class Room:
 
     def add_song_to_list(self, song):
         self.room_song_list.append(song)
+
+# has room reached capacity
+
+    def has_room_reached_capacity(self, room_guest_list):
+        if len(self.room_guest_list) <= self.room_capacity:
+            return False
+        else:
+            return True
