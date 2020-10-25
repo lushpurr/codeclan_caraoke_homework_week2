@@ -6,6 +6,7 @@ class Room:
         self.room_capacity = 5
         self.room_song_list = []
         self.room_guest_list = []
+        self.room_tab = []
 
 
 # does customer have enough money to pay for room
@@ -43,3 +44,17 @@ class Room:
             return False
         else:
             return True
+
+# tab calculation functions
+
+    def tab_value(self):
+        total = 0
+
+        for drink in self.room_tab:
+            total += drink.price
+
+        return total
+
+    def add_to_tab(self, drink):
+        self.room_tab.append(drink)
+        

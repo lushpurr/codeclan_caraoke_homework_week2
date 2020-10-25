@@ -3,6 +3,7 @@ import unittest
 from classes.room import *
 from classes.guest import *
 from classes.song import *
+from classes.drink import *
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
@@ -18,6 +19,9 @@ class TestRoom(unittest.TestCase):
         self.song1 = Song("The Velvet Underground", "Rock and Roll", 1)
         self.song2 = Song("The Zombies", "She's Not There", 2)
         self.song3 = Song("The Mamas and Papas", "California Dreamin'", 3)
+        self.drink1 = Drink("Tennents", 3.00)
+        self.drink2 = Drink("Guinness", 3.50)
+        self.drink3 = Drink("Red Wine", 4.00)
 
 
     def test_if_customer_has_enough_cash__True(self):
@@ -62,4 +66,17 @@ class TestRoom(unittest.TestCase):
         self.room.add_to_booking(self.guest5)
         self.assertEqual(True, self.room.has_room_reached_capacity(self.room.room_guest_list))
 
+    def test_tab_value_starts_at_0(self):
+        self.assertEqual(0, self.room.tab_value())
 
+    def test_add_to_tab__single_item(self):
+        self.room.add_to_tab(self.drink1)
+        self.assertEqual(1, len(self.room.room_tab))
+
+    def test_add_a_booking__multiple_items(self):
+        self.room.add_to_tab(self.drink2)
+        self.room.add_to_tab(self.drink2)
+        self.room.add_to_tab(self.drink2)
+        self.room.add_to_tab(self.drink2)
+        self.room.add_to_tab(self.drink2)
+        self.assertEqual(5,len(self.room.room_tab))
