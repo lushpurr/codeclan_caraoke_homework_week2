@@ -13,5 +13,11 @@ class Guest:
             if song.song_title == self.favourite_song:
                 return "Oh wow my favourite song!"
 
+    def sufficient_funds(self, drink):
+        return self.wallet >= drink.price
+
+    def buy_drink(self, drink):
+        self.sufficient_funds(drink)
+        self.wallet -= drink.price
 
     
