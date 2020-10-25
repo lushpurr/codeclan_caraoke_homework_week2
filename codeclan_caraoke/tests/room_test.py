@@ -80,3 +80,12 @@ class TestRoom(unittest.TestCase):
         self.room.add_to_tab(self.drink2)
         self.room.add_to_tab(self.drink2)
         self.assertEqual(5,len(self.room.room_tab))
+
+    def test_calculate_room_tab(self):
+        self.room.add_to_tab(self.drink3)
+        self.room.add_to_tab(self.drink3)
+        self.room.add_to_tab(self.drink3)
+        self.room.add_to_tab(self.drink3)
+        self.room.add_to_tab(self.drink3)
+        self.assertEqual(20.00, self.room.tab_value())
+
